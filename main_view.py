@@ -2,16 +2,18 @@
 
 # Form implementation generated from reading ui file 'main_view.ui'
 #
-# Created by: PyQt5 UI code generator 5.11.3
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(756, 475)
+        MainWindow.resize(756, 415)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -101,6 +103,21 @@ class Ui_MainWindow(object):
         self.file1MemTable.verticalHeader().setStretchLastSection(False)
         self.horizontalLayout_2.addWidget(self.file1MemTable)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem2)
+        self.save_edite = QtWidgets.QPushButton(self.centralwidget)
+        self.save_edite.setObjectName("save_edite")
+        self.horizontalLayout_3.addWidget(self.save_edite)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem3)
+        self.merge_f1_to_f2 = QtWidgets.QPushButton(self.centralwidget)
+        self.merge_f1_to_f2.setObjectName("merge_f1_to_f2")
+        self.horizontalLayout_3.addWidget(self.merge_f1_to_f2)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem4)
+        self.verticalLayout.addLayout(self.horizontalLayout_3)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 756, 22))
@@ -155,4 +172,5 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "6"))
         item = self.file1MemTable.horizontalHeaderItem(16)
         item.setText(_translate("MainWindow", "7"))
-
+        self.save_edite.setText(_translate("MainWindow", "Save Edit on f-2"))
+        self.merge_f1_to_f2.setText(_translate("MainWindow", "Merge & save f-1 to f-2"))

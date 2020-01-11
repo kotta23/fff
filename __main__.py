@@ -13,6 +13,8 @@ class HexModdifierTool(QMainWindow , Ui_MainWindow):
         self.file1_path = ""
         self.file2_path = ""
         self.file1MemTable.cellClicked.connect(self.cellClickedAt)
+        self.save_edite.clicked.connect(lambda : self.save())
+        self.merge_f1_to_f2.clicked.connect(lambda : self.merge())
         self.show()
         
     def start_analysis(self):
@@ -74,7 +76,25 @@ class HexModdifierTool(QMainWindow , Ui_MainWindow):
         header.setSectionResizeMode(2, QHeaderView.ResizeToContents)
         
     
-        
+    def merge(self):
+        pass
+
+
+    def save(self):
+        file1_rows = get_memory_mapped_rows(self.file1_path)
+        file2_rows = get_memory_mapped_rows(self.file2_path)
+        no_of_cols = max(len(file1_rows) , len(file2_rows))
+        file1_bigger = True if len(file1_rows) > len(file2_rows)  else False
+        f= open("new_dump.txt","w+")
+        for index,row in enumerate(file2_rows):
+            has_to_compare = False
+            if index < len(file1_rows):
+                has_to_compare  = True
+            for i in range(len(row)):
+                col_off = 9+i
+                f.write(self.file1MemTable.itemAt(index,col_off,QTableWidgetItem(row[i])))
+                self.file1MemTable.setItem(index , col_off, QTableWidgetItem(row[i]))
+        f.close()
 
 
 app = QApplication([])
