@@ -77,8 +77,18 @@ class HexModdifierTool(QMainWindow , Ui_MainWindow):
         
     
     def merge(self):
-        pass
-
+        file1_rows = get_memory_mapped_rows(self.file1_path)
+        file2_rows = get_memory_mapped_rows(self.file2_path)
+        no_of_cols = max(len(file1_rows) , len(file2_rows))
+        file1_bigger = True if len(file1_rows) > len(file2_rows)  else False
+        self.file1MemTable.clear()
+        self.file1MemTable.setRowCount(no_of_cols)
+        for index ,row in enumerate(file1_rows):
+            for i in range(len(row)):
+                col_off = 9+i
+                self.file1MemTable.itemAt( index , i, )
+                self.file1MemTable.setItem(index , col_off, QTableWidgetItem(row[i]))
+  
 
     def save(self):
         file1_rows = get_memory_mapped_rows(self.file1_path)
@@ -92,7 +102,9 @@ class HexModdifierTool(QMainWindow , Ui_MainWindow):
                 has_to_compare  = True
             for i in range(len(row)):
                 col_off = 9+i
-                f.write(self.file1MemTable.itemAt(index,col_off,QTableWidgetItem(row[i])))
+                print(index,col_off)
+                wr = self.file1MemTable.itemAt(index,col_off)
+                f.write(wr)
                 self.file1MemTable.setItem(index , col_off, QTableWidgetItem(row[i]))
         f.close()
 
